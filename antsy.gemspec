@@ -1,6 +1,6 @@
-#
 # -*- encoding: utf-8 -*-
-$: << "#{File.dirname __FILE__}/lib"
+lib = File.expand_path('../lib/', __FILE__)
+$:.unshift lib unless $:.include?(lib)
 require 'antsy/version'
 
 Gem::Specification.new do |s|

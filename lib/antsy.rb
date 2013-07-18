@@ -1,18 +1,21 @@
 require 'rubygems'
 require 'json'
+require 'shellwords'
 
-Module Antsy
+module Antsy
 
-  # parse the file named on the command line, whose contents look like this:
+  # parse the specified file, whose contents look like this:
   #    arg1=foo arg2=bar
   # and return a hash like this:
   #    {:arg1 => 'foo', :arg2 => 'bar'}
   def self.args()
-    File.read(ARGV.first)
+    Hash[
+      Shellwords::shellwords(File.read(ARGV.first)).map { |kv| kv.split('=') }
+    ].inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
   end
 
   def self.fail!(msg)
-    puts ({ 'failed' => 'True', 'msg' => args }.to_json)
+    puts ({ 'failed' => 'True', 'msg' => msg }.to_json)
     exit 1
   end
 
