@@ -17,9 +17,9 @@ Antsy.fail! "must provide foo argument" unless args[:foo]
 # do stuff with args
 # ...
 
-# if something was updated
-Antsy.changed! {foo: 'bar'}
-
-# or if nothing was changed
-Antsy.no_change! {foo: 'bar'}
+if something was updated
+  Antsy.changed!
+else
+  Antsy.no_change!
+end
 ```

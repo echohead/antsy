@@ -17,13 +17,13 @@ describe Antsy do
   end
 
   it 'should emit change json and exit success' do
-    capture_stdout { Antsy.changed!({}) }.chomp.should == {'changed' => 'True'}.to_json
-    lambda { Antsy.changed!({}) }.should exit_with_code 0
+    capture_stdout { Antsy.changed! }.chomp.should == {'changed' => 'True'}.to_json
+    lambda { Antsy.changed! }.should exit_with_code 0
 
   end
 
   it 'should emit no-change json and exit success' do
-    capture_stdout { Antsy.no_change!({}) }.chomp.should == {'changed' => 'False'}.to_json
-    lambda { Antsy.no_change!({}) }.should exit_with_code 0
+    capture_stdout { Antsy.no_change! }.chomp.should == {'changed' => 'False'}.to_json
+    lambda { Antsy.no_change! }.should exit_with_code 0
   end
 end

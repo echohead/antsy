@@ -19,13 +19,13 @@ module Antsy
     exit 1
   end
 
-  def self.changed!(data)
+  def self.changed!(data={})
     data[:changed] = 'True'
     puts data.to_json
     exit 0
   end
 
-  def self.no_change!(data)
+  def self.no_change!(data={})
     data[:changed] = 'False'
     puts data.to_json
     exit 0
